@@ -24,7 +24,7 @@ public:
 int KillerData::GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES period,int days)
   {
    ArraySetAsSeries(rates,true);
-   int barCount=GetBarCount(days,period);
+   int barCount = GetBarCount(days,period);
    return (CopyRates(symbol,period,0,barCount,rates));
   }
 
@@ -33,7 +33,7 @@ int KillerData::GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES per
 //+------------------------------------------------------------------+
 int KillerData::GetBarCount(int days,ENUM_TIMEFRAMES period)
   {
-   return (days*24*60*60/PeriodSeconds(period));
+   return (days*24*60*60 / PeriodSeconds(period));
   }
 //+------------------------------------------------------------------+
 //|                                                                  |

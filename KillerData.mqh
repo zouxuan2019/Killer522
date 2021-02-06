@@ -14,7 +14,8 @@ private:
 public:
                      KillerData();
                     ~KillerData();
-   int        GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES period,int days);
+   int               GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES period,int days);
+   double            GetSymbolPoint(string symbol);
   };
 
 
@@ -25,7 +26,7 @@ int KillerData::GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES per
   {
    ArraySetAsSeries(rates,true);
    int barCount = GetBarCount(days,period);
-   return (CopyRates(symbol,period,0,barCount,rates));
+   return (CopyRates(symbol, period, 0, barCount,rates));
   }
 
 //+------------------------------------------------------------------+
@@ -49,4 +50,13 @@ KillerData::~KillerData()
   {
   }
 
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double KillerData::GetSymbolPoint(string symbol)
+  {
+   return SymbolInfoDouble(symbol,SYMBOL_POINT) * 10;
+  }
 //+------------------------------------------------------------------+

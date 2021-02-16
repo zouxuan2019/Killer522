@@ -8,13 +8,11 @@
 #property version   "1.00"
 class KillerData
   {
-private:
-   int               GetBarCount(int days,ENUM_TIMEFRAMES period);
-
 public:
                      KillerData();
                     ~KillerData();
    int               GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES period,int days);
+   int               GetLowInfo(double &lows[],string symbol,ENUM_TIMEFRAMES period,int totalBarNumber);
    double            GetSymbolPoint(string symbol);
    string            GetDateTimeString(datetime time);
   };
@@ -27,6 +25,15 @@ int KillerData::GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES per
   {
    ArraySetAsSeries(rates,true);
    return (CopyRates(symbol, period, 0, totalBarNumber,rates));
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+int KillerData::GetLowInfo(double &lows[],string symbol,ENUM_TIMEFRAMES period,int totalBarNumber)
+  {
+   ArraySetAsSeries(lows,true);
+   return (CopyLow(symbol, period, 0, totalBarNumber,lows));
   }
 //|                                                                  |
 //+------------------------------------------------------------------+

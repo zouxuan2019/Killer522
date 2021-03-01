@@ -42,9 +42,9 @@ public:
 //+------------------------------------------------------------------+
 int KillerHelper:: GetScanWaitingTime(ENUM_TIMEFRAMES barPeriod)
   {
-   int interval =PeriodSeconds(barPeriod);
+   int interval = PeriodSeconds(barPeriod);
    datetime currentDate = TimeTradeServer();
-   int result=interval - (int)currentDate % interval + 60;
+   int result = interval - (int)currentDate % interval + 60;
    return (result);
   }
 //+------------------------------------------------------------------+

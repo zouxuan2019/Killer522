@@ -13,6 +13,7 @@ public:
                     ~KillerData();
    int               GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES period,int days);
    int               GetLowInfo(double &lows[],string symbol,ENUM_TIMEFRAMES period,int totalBarNumber);
+   int               GetHighInfo(double &highs[],string symbol,ENUM_TIMEFRAMES period,int totalBarNumber);
    double            GetSymbolPoint(string symbol);
    string            GetDateTimeString(datetime time);
   };
@@ -27,6 +28,14 @@ int KillerData::GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES per
    return (CopyRates(symbol, period, 0, totalBarNumber,rates));
   }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+int KillerData::GetHighInfo(double &highs[],string symbol,ENUM_TIMEFRAMES period,int totalBarNumber)
+  {
+   ArraySetAsSeries(highs,true);
+   return (CopyHigh(symbol, period, 0, totalBarNumber,highs));
+  }
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -69,4 +78,5 @@ string KillerData::GetDateTimeString(datetime time)
   {
    return TimeToString(time,TIME_DATE)+" " +TimeToString(time,TIME_MINUTES);
   }
+//+------------------------------------------------------------------+
 //+------------------------------------------------------------------+

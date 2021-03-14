@@ -14,7 +14,7 @@ public:
    int               GetPriceInfo(MqlRates &rates[],string symbol,ENUM_TIMEFRAMES period,int days);
    int               GetLowInfo(double &lows[],string symbol,ENUM_TIMEFRAMES period,int totalBarNumber);
    int               GetHighInfo(double &highs[],string symbol,ENUM_TIMEFRAMES period,int totalBarNumber);
-   double            GetSymbolPoint(string symbol);
+   double            GetSymbolPip(string symbol);
    string            GetDateTimeString(datetime time);
   };
 
@@ -62,7 +62,7 @@ KillerData::~KillerData()
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-double KillerData::GetSymbolPoint(string symbol)
+double KillerData::GetSymbolPip(string symbol)
   {
    return SymbolInfoDouble(symbol,SYMBOL_POINT) * 10;
   }
